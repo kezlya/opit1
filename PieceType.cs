@@ -34,12 +34,14 @@ namespace Pirozgok
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
+
+                //left conner
+                if (i == 0 && (c[i] + 1) < c[i + 1])
+                    return result;
+                
                 // holl 2 plus deep
                 if (i - 1 >= 0 && i + 1 < c.Length
                     && c[i - 1] > (c[i] + 1) && (c[i] + 1) < c[i + 1])
-                    return result;
-                //left conner
-                if(i==0 && (c[i] + 1) < c[i + 1])
                     return result;
 
                 //right conner
@@ -51,13 +53,33 @@ namespace Pirozgok
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
+
                 if (c.Length < i + 3) break;
 
                 if (c[i] != c[i + 1] || c[i + 1] != c[i + 2] || c[i + 2] != c[i + 3]) continue;
-
-                if (i + 4 < c.Length && c[i] == c[i+4]) //shift it to the right a to give more options for next shape
+                if (i + 4 < c.Length && c[i] == c[i + 4])
+                    //shift it to the right a to give more options for next shape
                     result.x = i + 1;
                 return result;
+            }
+
+            result.Rotation = 1;
+            for (int i = 0; i < c.Length; i++)
+            {
+                result.x = i;
+
+                //left conner
+                if (i == 0 && (c[i]) < c[i + 1])
+                    return result;
+
+                // holl 2 plus deep
+                if (i - 1 >= 0 && i + 1 < c.Length
+                    && c[i - 1] > (c[i]) && (c[i]) < c[i + 1])
+                    return result;
+
+                //right conner
+                if (i == c.Length - 1 && (c[i]) < c[i - 1])
+                    return result;
             }
 
             return result;
