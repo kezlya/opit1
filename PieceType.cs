@@ -30,7 +30,7 @@ namespace Pirozgok
         {
             var result = new Position();
 
-            result.Rotation = 2;
+            result.Rotation = 1;
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
@@ -47,7 +47,7 @@ namespace Pirozgok
                     return result;
             }
 
-            result.Rotation = 1;
+            result.Rotation = 0;
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
@@ -70,7 +70,7 @@ namespace Pirozgok
         {
             var result = new Position();
 
-            result.Rotation = 2;
+            result.Rotation = 1;
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
@@ -78,7 +78,7 @@ namespace Pirozgok
                     return result;
             }
 
-            result.Rotation = 3;
+            result.Rotation = 2;
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
@@ -86,7 +86,7 @@ namespace Pirozgok
                     return result;
             }
 
-            result.Rotation = 1;
+            result.Rotation = 0;
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
@@ -97,7 +97,7 @@ namespace Pirozgok
                 return result;
             }
 
-            result.Rotation = 4;
+            result.Rotation = 3;
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
