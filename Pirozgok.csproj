@@ -52,11 +52,16 @@
     <Compile Include="FieldCell.cs" />
     <Compile Include="FieldCellType.cs" />
     <Compile Include="GameState.cs" />
+    <Compile Include="Pieces\Extention.cs" />
+    <Compile Include="Pieces\IPiece.cs" />
     <Compile Include="MatchSettings.cs" />
     <Compile Include="MoveType.cs" />
     <Compile Include="Parser.cs" />
+    <Compile Include="Pieces\PiceI.cs" />
+    <Compile Include="Pieces\PiceJ.cs" />
     <Compile Include="PieceType.cs" />
     <Compile Include="PlayerState.cs" />
+    <Compile Include="Pieces\Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

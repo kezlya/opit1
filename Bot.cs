@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Pirozgok.Commands;
+using Pirozgok.Pieces;
 
 namespace Pirozgok
 {
@@ -59,9 +60,14 @@ namespace Pirozgok
 
         private MoveType[] MovesForRound(int milliseconds)
         {
+
+
+
+
             var moves = new List<MoveType>();
             //TODO: Impliment timer
- 
+
+            //TODO: look for lowest y and select position
 
 
             //TODO: find perfect place for current pice
@@ -85,56 +91,13 @@ namespace Pirozgok
             //TODO: check if aponnent close to die
 
 
-            var random = new Random();
-            var moveValues = Enum.GetValues(typeof (MoveType));
-            
 
-            for (var i = 0; i < moveValues.Length; i++)
-            {
-                moves.Add((MoveType)Enum.ToObject(typeof(MoveType), random.Next(0, moveValues.Length - 1)));
-            }
 
             return moves.ToArray();
         }
 
-        //public List<MoveType> FindPerfectFit(PieceType piece)
-        //{
-        //    Field myField = Players[MatchSettings.PlayerName].Field;
-        //    for (int i=0;i<myField.Width;i++)
-        //    {
-        //        IPieceTypeSettings.FitPosition(piece);
-        //    }
-
-        //    return new List<MoveType>();
-        //}
-
-        //private bool[] FitInColum(int[] c, PieceType pice)
-        //{
-        //    var result = new bool[c.Length];
-        //    for (int i = 0; i < c.Length; i++)
-        //    {
-        //        bool fit = false;
-        //        switch (pice)
-        //        {
-        //                case PieceType.I:
-        //                if (c.Length >= i + 3)
-        //                {
-        //                    fit = (c[i] == c[i + 1] && c[i + 2] == c[i + 3]);
-        //                }
-        //                if (i - 1 >= 0 && i+1<c.Length)
-        //                {
-        //                    fit = (c[i - 1] > i && i < c[i + 1]);
-        //                }
-                        
-
-        //        }
-        //    }
-        //    return result
-        //}
-
         public void Dispose()
         {
         }
-
     }
 }

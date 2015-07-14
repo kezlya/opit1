@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pirozgok;
+using Pirozgok.Pieces;
 
 namespace Tests
 {
     [TestClass]
-    public class Ipiece
+    public class TestsPieceI
     {
         readonly PiceI _pice = new PiceI();
 
@@ -20,7 +21,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(1, position.x);
+            Assert.AreEqual(1, position.X);
         }
 
         [TestMethod]
@@ -35,7 +36,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(5, position.x);
+            Assert.AreEqual(5, position.X);
         }
 
         [TestMethod]
@@ -50,7 +51,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.x);
+            Assert.AreEqual(0, position.X);
         }
 
         [TestMethod]
@@ -65,7 +66,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(9, position.x);
+            Assert.AreEqual(9, position.X);
         }
 
         [TestMethod]
@@ -80,7 +81,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(9, position.x);
+            Assert.AreEqual(9, position.X);
         }
 
         [TestMethod]
@@ -95,7 +96,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(0, position.x);
+            Assert.AreEqual(0, position.X);
         }
 
         [TestMethod]
@@ -110,7 +111,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.x);
+            Assert.AreEqual(0, position.X);
         }
 
         [TestMethod]
@@ -125,7 +126,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.x);
+            Assert.AreEqual(0, position.X);
         }
 
         [TestMethod]
@@ -146,7 +147,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(9, position.x);
+            Assert.AreEqual(9, position.X);
         }
 
         [TestMethod]
@@ -167,7 +168,7 @@ namespace Tests
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.x);
+            Assert.AreEqual(0, position.X);
         }
     }
 }
