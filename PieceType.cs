@@ -104,7 +104,7 @@ namespace Pirozgok
             for (int i = 0; i < c.Length; i++)
             {
                 result.x = i;
-                if (i+2 < c.Length && c[i] == c[i + 1] && c[i + 1] == c[i + 2]-1)
+                if (i+2 < c.Length && c[i] == c[i + 1] && c[i + 1] == c[i + 2]+1)
                     return result;
             }
 
