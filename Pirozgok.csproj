@@ -52,6 +52,9 @@
     <Compile Include="FieldCell.cs" />
     <Compile Include="FieldCellType.cs" />
     <Compile Include="GameState.cs" />
+    <Compile Include="Pieces\PiceZ.cs" />
+    <Compile Include="Pieces\PiceT.cs" />
+    <Compile Include="Pieces\PiceS.cs" />
     <Compile Include="Pieces\PiceO.cs" />
     <Compile Include="Pieces\PiceL.cs" />
     <Compile Include="Pieces\Extention.cs" />
