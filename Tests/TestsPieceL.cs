@@ -4,18 +4,93 @@ using Pirozgok.Pieces;
 namespace Tests
 {
     [TestClass]
-    public class TestsPieceI
+    public class TestsPieceL
     {
-        readonly PiceI _pice = new PiceI();
+        readonly PiceL _pice = new PiceL();
 
         [TestMethod]
-        public void I_Flat()
+        public void L_Hole1()
         {
+            // # ### # ##
+            // ##### ####
             // ##########
+            // 0I23456789
+            var colums = new[] { 3, 2, 3, 3, 3, 1, 3, 2, 3, 3 };
+
+            var position = _pice.GetFit(colums);
+
+            Assert.AreEqual(3, position.Rotation);
+            Assert.AreEqual(4, position.X);
+        }
+
+        [TestMethod]
+        public void L_DeepHole()
+        {
+            // # ### # ##
+            // ##### ####
+            // ##### ####
+            // 0I23456789
+            var colums = new[] { 3, 2, 3, 3, 3, 0, 3, 2, 3, 3 };
+
+            var position = _pice.GetFit(colums);
+
+            Assert.AreEqual(2, position.Rotation);
+            Assert.AreEqual(1, position.X);
+        }
+
+        [TestMethod]
+        public void L_SmallHole()
+        {
+            //       # ##
+            //  # #######
+            //  #########
+            // 0I23456789
+            var colums = new[] { 0, 2, 1, 2, 2, 2, 3, 2, 3, 3 };
+
+            var position = _pice.GetFit(colums);
+
+            Assert.AreEqual(2, position.Rotation);
+            Assert.AreEqual(2, position.X);
+        }
+
+        [TestMethod]
+        public void L_UpsideDown()
+        {
+            // #  # # # #
             // ##########
             // ##########
             // 0I23456789
-            var colums = new[] { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
+            var colums = new[] { 3, 2, 2, 3, 2, 3, 2, 3, 2, 3 };
+
+            var position = _pice.GetFit(colums);
+
+            Assert.AreEqual(1, position.Rotation);
+            Assert.AreEqual(1, position.X);
+        }
+
+        [TestMethod]
+        public void L_NotFlat()
+        {
+            // # # # # #
+            // ##########
+            // ##########
+            // 0I23456789
+            var colums = new[] { 3, 2, 3, 2, 3, 2, 3, 2, 3, 2 };
+
+            var position = _pice.GetFit(colums);
+
+            Assert.AreEqual(0, position.Rotation);
+            Assert.AreEqual(0, position.X);
+        }
+
+        [TestMethod]
+        public void L_Flat()
+        {
+            // #   # # #
+            // ##########
+            // ##########
+            // 0I23456789
+            var colums = new[] { 3, 2, 2, 2, 3, 2, 3, 2, 3, 2 };
 
             var position = _pice.GetFit(colums);
 
@@ -24,97 +99,22 @@ namespace Tests
         }
 
         [TestMethod]
-        public void I_DeepHole()
+        public void L_UpsideDownHole()
         {
-            // ##### # ##
-            // ##### ####
+            // # # #     
+            // ######  #
             // ##########
             // 0I23456789
-            var colums = new[] { 3, 3, 3, 3, 3, 1, 3, 2, 3, 3 };
+            var colums = new[] { 3, 2, 3, 2, 3, 2, 1, 1, 2, 1 };
 
             var position = _pice.GetFit(colums);
 
             Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(5, position.X);
+            Assert.AreEqual(6, position.X);
         }
 
         [TestMethod]
-        public void I_LeftHole()
-        {
-            //  #### # ##
-            //  #### ####
-            //  #########
-            // 0I23456789
-            var colums = new[] { 0, 3, 3, 3, 3, 1, 3, 2, 3, 3 };
-
-            var position = _pice.GetFit(colums);
-
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.X);
-        }
-
-        [TestMethod]
-        public void I_RightHole()
-        {
-            // ##### # #
-            // #########
-            // ##########
-            // 0I23456789
-            var colums = new[] { 3, 3, 3, 3, 3, 2, 3, 2, 3, 1 };
-
-            var position = _pice.GetFit(colums);
-
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(9, position.X);
-        }
-
-        [TestMethod]
-        public void I_HoleBetterThenFlat()
-        {
-            //     # # #
-            // #########
-            // ##########
-            // 0I23456789
-            var colums = new[] { 2, 2, 2, 2, 3, 2, 3, 2, 3, 1 };
-
-            var position = _pice.GetFit(colums);
-
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(9, position.X);
-        }
-
-        [TestMethod]
-        public void I_FlatWithBumps()
-        {
-            //     # # #
-            // ##########
-            // ##########
-            // 0I23456789
-            var colums = new[] { 2, 2, 2, 2, 3, 2, 3, 2, 3, 2 };
-
-            var position = _pice.GetFit(colums);
-
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(0, position.X);
-        }
-
-        [TestMethod]
-        public void I_NotFlatNotHole()
-        {
-            //  #  # # #
-            // ##########
-            // ##########
-            // 0I23456789
-            var colums = new[] { 2, 3, 2, 2, 3, 2, 3, 2, 3, 2 };
-
-            var position = _pice.GetFit(colums);
-
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.X);
-        }
-
-        [TestMethod]
-        public void I_Steps()
+        public void L_Steps()
         {
             //   #     #
             //  ###   ###
@@ -124,12 +124,12 @@ namespace Tests
 
             var position = _pice.GetFit(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, position.Rotation);
+            Assert.AreEqual(4, position.X);
         }
 
         [TestMethod]
-        public void I_Steps2()
+        public void L_Steps2()
         {
             // #
             // ##
@@ -145,12 +145,12 @@ namespace Tests
 
             var position = _pice.GetFit(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(9, position.X);
+            Assert.AreEqual(-1, position.Rotation);
+            Assert.AreEqual(-1, position.X);
         }
 
         [TestMethod]
-        public void I_Steps3()
+        public void L_Steps3()
         {
             //          #
             //         ##
@@ -166,7 +166,7 @@ namespace Tests
 
             var position = _pice.GetFit(colums);
 
-            Assert.AreEqual(1, position.Rotation);
+            Assert.AreEqual(0, position.Rotation);
             Assert.AreEqual(0, position.X);
         }
     }
