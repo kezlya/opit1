@@ -1,7 +1,10 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Pirozgok.Commands;
 using Pirozgok.Pieces;
 
@@ -71,7 +74,18 @@ namespace Pirozgok
 
 
             //TODO: find perfect place for current pice
-            var columns = new[] {1, 2, 3};
+
+            //get columns from field 
+            var myField = Players[MatchSettings.PlayerName].Field;
+            var flat = myField.Grid.ToEnumerable<FieldCell>();
+            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block).ToList();
+            int[] columns = new int[myField.Width];
+            foreach (var cell in accupiedCells)
+            {
+                if (cell.Y > columns[cell.X]) columns[cell.X] = cell.Y;
+            }
+
+           // var columns = GetColumns(myGrid);
             Position position;
             switch (GameState.PieceType)
             {
@@ -96,8 +110,28 @@ namespace Pirozgok
             return moves.ToArray();
         }
 
+        private int[] GetColumns(FieldCell[,] grid)
+        {
+            foreach (var row in grid)
+            {
+                
+            }
+            return new int[] {};
+        }
+
+       
+
         public void Dispose()
         {
+        }
+    }
+
+    public static class ArrayExtensions
+    {
+        public static IEnumerable<T> ToEnumerable<T>(this Array target)
+        {
+            foreach (var item in target)
+                yield return (T)item;
         }
     }
 }
