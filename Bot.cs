@@ -76,17 +76,16 @@ namespace Pirozgok
             //TODO: find perfect place for current pice
 
             //get columns from field 
-            var myField = Players[MatchSettings.PlayerName].Field;
-            var flat = myField.Grid.ToEnumerable<FieldCell>();
-            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block).ToList();
-            int[] columns = new int[myField.Width];
-            foreach (var cell in accupiedCells)
-            {
-                if (cell.Y > columns[cell.X]) columns[cell.X] = cell.Y;
-            }
+            var columns = GetColumns();
 
            // var columns = GetColumns(myGrid);
-            Position position;
+            
+            Position position = new Position
+            {
+                Rotation = 0,
+                X=0
+            };
+
             switch (GameState.PieceType)
             {
                 case PieceType.I:
@@ -95,28 +94,79 @@ namespace Pirozgok
                 case PieceType.J:
                     position = new PiceJ().GetFit(columns);
                     break;
+                case PieceType.L:
+                    position = new PiceL().GetFit(columns);
+                    break;
+                case PieceType.O:
+                    position = new PiceO().GetFit(columns);
+                    break;
+                case PieceType.S:
+                    position = new PiceS().GetFit(columns);
+                    break;
+                case PieceType.T:
+                    position = new PiceT().GetFit(columns);
+                    break;
+                case PieceType.Z:
+                    position = new PiceZ().GetFit(columns);
+                    break;
             }
 
             //position.Rotation
+            if (position.Rotation > 0)
+            {
+                moves.AddRange(Enumerable.Repeat(MoveType.TurnRight, position.Rotation));
+            }
 
+            var offset = (position.Rotation == 1 || GameState.PieceType == PieceType.O) ? 1 : 0;
+            var xAfterRotation = GameState.PiecePositionX + offset;
+
+            var x1based = position.X + 1;
+
+            if (xAfterRotation > x1based)
+            {
+                //move left
+                moves.AddRange(Enumerable.Repeat(MoveType.Left, xAfterRotation - x1based));
+
+            }
+            else if (xAfterRotation < x1based)
+            {
+                //move right
+                moves.AddRange(Enumerable.Repeat(MoveType.Right, x1based - xAfterRotation));
+                
+            }
+            else
+            {
+                moves.Add(MoveType.Down);
+            }
 
             //TODO: find perfect place for next peace
 
+
+
             //TODO: check if aponnent close to die
 
+            //TODO: prioritize combo points 
 
+            //TODO: Benchmark all methods
 
 
             return moves.ToArray();
         }
 
-        private int[] GetColumns(FieldCell[,] grid)
+        private int[] GetColumns()
         {
-            foreach (var row in grid)
+            var myField = Players[MatchSettings.PlayerName].Field;
+            var flat = myField.Grid.ToEnumerable<FieldCell>();
+            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block).ToList();
+            int[] columns = new int[myField.Width];
+
+            foreach (var cell in accupiedCells)
             {
-                
+                var yy = myField.Height - cell.Y;
+                if ( yy > columns[cell.X]) columns[cell.X] = yy;
             }
-            return new int[] {};
+
+            return columns;
         }
 
        
@@ -130,8 +180,7 @@ namespace Pirozgok
     {
         public static IEnumerable<T> ToEnumerable<T>(this Array target)
         {
-            foreach (var item in target)
-                yield return (T)item;
+            return from object item in target select (T)item;
         }
     }
 }

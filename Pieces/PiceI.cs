@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Pirozgok.Pieces
 {
     public class PiceI : IPiece

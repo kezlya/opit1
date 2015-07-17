@@ -1,6 +1,6 @@
 ﻿namespace Pirozgok
 {
-    enum MoveType : byte
+    public enum MoveType : byte
     {
         Down,
         Left,
