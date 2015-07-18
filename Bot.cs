@@ -78,12 +78,12 @@ namespace Pirozgok
             //get columns from field 
             var columns = GetColumns();
 
-           // var columns = GetColumns(myGrid);
-            
+            // var columns = GetColumns(myGrid);
+
             Position position = new Position
             {
                 Rotation = 0,
-                X=0
+                X = 0
             };
 
             switch (GameState.PieceType)
@@ -117,22 +117,22 @@ namespace Pirozgok
                 moves.AddRange(Enumerable.Repeat(MoveType.TurnRight, position.Rotation));
             }
 
-            var offset = (position.Rotation == 1 || GameState.PieceType == PieceType.O) ? 1 : 0;
-            var xAfterRotation = GameState.PiecePositionX + offset;
+            var offset = (position.Rotation == 1) ? (GameState.PieceType == PieceType.I) ? 2 : 1 : 0;
+            var origenX = GameState.PiecePositionX + offset;
 
-            var x1based = position.X + 1;
+            var destinationX = position.X;
 
-            if (xAfterRotation > x1based)
+            if (origenX > destinationX)
             {
                 //move left
-                moves.AddRange(Enumerable.Repeat(MoveType.Left, xAfterRotation - x1based));
+                moves.AddRange(Enumerable.Repeat(MoveType.Left, origenX - destinationX));
 
             }
-            else if (xAfterRotation < x1based)
+            else if (origenX < destinationX)
             {
                 //move right
-                moves.AddRange(Enumerable.Repeat(MoveType.Right, x1based - xAfterRotation));
-                
+                moves.AddRange(Enumerable.Repeat(MoveType.Right, destinationX - origenX));
+
             }
             else
             {
@@ -163,13 +163,13 @@ namespace Pirozgok
             foreach (var cell in accupiedCells)
             {
                 var yy = myField.Height - cell.Y;
-                if ( yy > columns[cell.X]) columns[cell.X] = yy;
+                if (yy > columns[cell.X]) columns[cell.X] = yy;
             }
 
             return columns;
         }
 
-       
+
 
         public void Dispose()
         {

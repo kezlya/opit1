@@ -21,7 +21,7 @@ namespace Pirozgok
         {
             switch (command.Key)
             {
-                case "time_bank":
+                case "timebank":
                     MaximumTimeBank = int.Parse(command.Value);
                     break;
                 case "time_per_move":
