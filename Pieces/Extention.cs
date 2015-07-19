@@ -4,10 +4,6 @@ namespace Pirozgok.Pieces
 {
     public static class Extention
     {
-        public static bool IsLeftWall(this int[] columns, int i)
-        {
-            return (i == 0);
-        }
         public static bool IsLeft(this int[] columns, int i)
         {
             return (i - 1 >= 0 && i - 1 < columns.Length);
@@ -26,10 +22,6 @@ namespace Pirozgok.Pieces
             return columns[i - 2];
         }
 
-        public static bool IsRightWall(this int[] columns, int i)
-        {
-            return (i == columns.Length - 1);
-        }
         public static bool IsRight(this int[] columns, int i)
         {
             return (i + 1 >= 0 && i + 1 < columns.Length);

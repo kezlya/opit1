@@ -11,9 +11,8 @@ namespace Pirozgok.Pieces
             for (int i = 0; i < c.Length; i++)
             {
                 var cc = c[i];
-                if ((c.IsLeftWall(i) && cc + 1 < c.Right(i))
-                    || (c.IsRightWall(i) && cc + 1 < c.Left(i))
-                    || (c.IsLeft(i) && c.IsRight(i) && c.Left(i) > cc + 1 && cc + 1 < c.Right(i)))
+                if ((c.IsRight(i) && cc + 1 < c.Right(i))
+                    || (c.IsLeft(i) && cc + 1 < c.Left(i)))
                     result.Add(new Position
                     {
                         Rotation = rotation,
