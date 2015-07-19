@@ -84,30 +84,54 @@ namespace Pirozgok
             switch (GameState.PieceType)
             {
                 case PieceType.I:
-                    var deepHoles = PiceI.PositionsDeepHole(columns);
-                    if (deepHoles.Count != 0)
+                    var deepHolesI = PiceI.PositionsDeepHole(columns);
+                    if (deepHolesI.Count != 0)
                     {
-                        finalPosition = ChoosePosition(deepHoles);
+                        finalPosition = ChoosePosition(deepHolesI);
                         break;
                     }
                     
-                    var flats = PiceI.PositionsFlat(columns);
-                    if (flats.Count != 0)
+                    var flatsI = PiceI.PositionsFlat(columns);
+                    if (flatsI.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flats);
+                        finalPosition = ChoosePosition(flatsI);
                         break;
                     }
                     
-                    var steps = PiceI.PositionsOneLevelStep(columns);
-                    if (steps.Count != 0)
+                    var stepsI = PiceI.PositionsOneLevelStep(columns);
+                    if (stepsI.Count != 0)
                     {
-                        finalPosition = ChoosePosition(steps);
+                        finalPosition = ChoosePosition(stepsI);
                     }
                     break;
-                /*case PieceType.J:
-                    position = PiceJ.GetFit(columns);
+                case PieceType.J:
+                    var deepHolesJ = PiceJ.PositionsDeepHole(columns);
+                    if (deepHolesJ.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(deepHolesJ);
+                        break;
+                    }
+
+                    var flatHolesJ = PiceJ.PositionsFlatHole(columns);
+                    if (flatHolesJ.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flatHolesJ);
+                        break;
+                    }
+
+                    var flatsJ = PiceJ.PositionsFlat(columns);
+                    if (flatsJ.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flatsJ);
+                        break;
+                    }
+                    var notFlats = PiceJ.PositionsNotFlat(columns);
+                    if (notFlats.Count!=0)
+                    {
+                        finalPosition = ChoosePosition(notFlats);
+                    }
                     break;
-                case PieceType.L:
+                /*case PieceType.L:
                     position = PiceL.GetFit(columns);
                     break;
                 case PieceType.O:

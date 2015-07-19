@@ -53,6 +53,9 @@
     <Compile Include="TestsPieceI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsPieceExtentions.cs" />
+    <Compile Include="TestsPieceJ.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pirozgok.csproj">
