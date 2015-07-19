@@ -82,17 +82,29 @@ namespace Pirozgok.Pieces
                         case 1:
                             columnsAfter[i] = columnsAfter[i] + 4;
                             break;
+                            
                     }
                     break;
                 case PieceType.J:
                     switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 4;
+                            columnsAfter[i] = columnsAfter[i] + 2;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
                             break;
                         case 1:
+                            columnsAfter[i] = columnsAfter[i] + 3;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            break;
+                        case 2:
+                            columnsAfter[i] = columnsAfter[i] + 2;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            break;
+                        case 3:
                             columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
                             break;
                     }
                     break;
@@ -100,11 +112,22 @@ namespace Pirozgok.Pieces
                      switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 4;
-                            break;
-                        case 1:
                             columnsAfter[i] = columnsAfter[i] + 1;
                             columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 3;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            break;
+                        case 2:
+                            columnsAfter[i] = columnsAfter[i] + 2;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            break;
+                        case 3:
+                            columnsAfter[i] = columnsAfter[i] + 3;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
                             break;
                     }
                     break;
@@ -116,11 +139,13 @@ namespace Pirozgok.Pieces
                      switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 4;
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            columnsAfter[i] = columnsAfter[i] + 3;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
                             break;
                     }
                     break;
@@ -128,11 +153,22 @@ namespace Pirozgok.Pieces
                      switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 4;
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            columnsAfter[i] = columnsAfter[i] + 3;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            break;
+                        case 2:
+                            columnsAfter[i] = columnsAfter[i] + 2;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            break;
+                        case 3:
+                            columnsAfter[i] = columnsAfter[i] + 2;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
                             break;
                     }
                     break;
@@ -140,11 +176,13 @@ namespace Pirozgok.Pieces
                      switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 4;
+                            columnsAfter[i] = columnsAfter[i] + 2;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            columnsAfter[i] = columnsAfter[i] + 2;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
                             break;
                     }
                     break;
