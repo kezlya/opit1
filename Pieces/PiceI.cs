@@ -6,6 +6,7 @@ namespace Pirozgok.Pieces
     {
         public static List<Position> PositionsDeepHole(int[] c)
         {
+            const int rotation = 1;
             var result = new List<Position>();
             for (int i = 0; i < c.Length; i++)
             {
@@ -15,10 +16,10 @@ namespace Pirozgok.Pieces
                     || (c.IsLeft(i) && c.IsRight(i) && c.Left(i) > cc + 1 && cc + 1 < c.Right(i)))
                     result.Add(new Position
                     {
-                        Rotation = 0,
+                        Rotation = rotation,
                         X = i,
                         BurnRows = 0,
-                        ColumsAfter = c.GetColomnsAfter(i, 0, PieceType.I),
+                        ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.I),
                     });
             }
             return result;
@@ -26,6 +27,7 @@ namespace Pirozgok.Pieces
 
         public static List<Position> PositionsFlat(int[] c)
         {
+            const int rotation = 0;
             var result = new List<Position>();
             for (int i = 0; i < c.Length; i++)
             {
@@ -43,18 +45,18 @@ namespace Pirozgok.Pieces
                 {
                     result.Add(new Position
                     {
-                        Rotation = 0,
+                        Rotation = rotation,
                         X = i + 1,
                         BurnRows = 0,
-                        ColumsAfter = c.GetColomnsAfter(i + 1, 0, PieceType.I)
+                        ColumsAfter = c.GetColomnsAfter(i + 1, rotation, PieceType.I)
                     });
 
                     result.Add(new Position
                     {
-                        Rotation = 0,
+                        Rotation = rotation,
                         X = i,
                         BurnRows = 0,
-                        ColumsAfter = c.GetColomnsAfter(i, 0, PieceType.I)
+                        ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.I)
                     });
 
                     i++;
@@ -63,10 +65,10 @@ namespace Pirozgok.Pieces
                 {
                     result.Add(new Position
                     {
-                        Rotation = 0,
+                        Rotation = rotation,
                         X = i,
                         BurnRows = 0,
-                        ColumsAfter = c.GetColomnsAfter(i, 0, PieceType.I)
+                        ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.I)
                     });
                 }
             }
@@ -75,19 +77,19 @@ namespace Pirozgok.Pieces
 
         public static List<Position> PositionsOneLevelStep(int[] c)
         {
+            const int rotation = 1;
             var result = new List<Position>();
             for (int i = 0; i < c.Length; i++)
             {
                 var cc = c[i];
-                if ((c.IsLeftWall(i) && cc < c.Right(i))
-                   || (c.IsRightWall(i) && cc < c.Left(i))
-                   || (c.IsLeft(i) && c.IsRight(i) && c.Left(i) > cc && cc < c.Right(i)))
+                if ((c.IsLeft(i) && c.Left(i) > cc)
+                   || (c.IsRight(i) && cc < c.Right(i)))
                     result.Add(new Position
                      {
-                         Rotation = 1,
+                         Rotation = rotation,
                          X = i,
                          BurnRows = 0,
-                         ColumsAfter = c.GetColomnsAfter(i, 1, PieceType.I),
+                         ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.I),
                      });
             }
             return result;
