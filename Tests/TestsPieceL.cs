@@ -15,10 +15,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 3, 3, 3, 1, 3, 2, 3, 3 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(3, position.Rotation);
-            Assert.AreEqual(4, position.X);
+            Assert.AreEqual(1, deepHolePositions.Count);
+            Assert.AreEqual(2, flatHolePositions.Count);
+            Assert.AreEqual(1, flatPositions.Count);
+            Assert.AreEqual(3, notFlatPositions.Count);
+
+            foreach (var d in deepHolePositions)
+                Assert.AreEqual(3, d.Rotation);
+            foreach (var f in flatHolePositions)
+                Assert.AreEqual(2, f.Rotation);
+            foreach (var f in flatPositions)
+                Assert.AreEqual(0, f.Rotation);
+            foreach (var n in notFlatPositions)
+                Assert.AreEqual(1, n.Rotation);
+
+            Assert.AreEqual(4, deepHolePositions[0].X);
         }
 
         [TestMethod]
@@ -30,10 +46,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 3, 3, 3, 0, 3, 2, 3, 3 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(2, position.Rotation);
-            Assert.AreEqual(1, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(2, flatHolePositions.Count);
+            Assert.AreEqual(1, flatPositions.Count);
+            Assert.AreEqual(3, notFlatPositions.Count);
+
+            foreach (var d in deepHolePositions)
+                Assert.AreEqual(3, d.Rotation);
+            foreach (var f in flatHolePositions)
+                Assert.AreEqual(2, f.Rotation);
+            foreach (var f in flatPositions)
+                Assert.AreEqual(0, f.Rotation);
+            foreach (var n in notFlatPositions)
+                Assert.AreEqual(1, n.Rotation);
+
+            Assert.AreEqual(1, flatHolePositions[0].X);
         }
 
         [TestMethod]
@@ -45,10 +77,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 0, 2, 1, 2, 2, 2, 3, 2, 3, 3 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(2, position.Rotation);
-            Assert.AreEqual(2, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(2, flatHolePositions.Count);
+            Assert.AreEqual(1, flatPositions.Count);
+            Assert.AreEqual(3, notFlatPositions.Count);
+
+            foreach (var d in deepHolePositions)
+                Assert.AreEqual(3, d.Rotation);
+            foreach (var f in flatHolePositions)
+                Assert.AreEqual(2, f.Rotation);
+            foreach (var f in flatPositions)
+                Assert.AreEqual(0, f.Rotation);
+            foreach (var n in notFlatPositions)
+                Assert.AreEqual(1, n.Rotation);
+
+            Assert.AreEqual(2, flatHolePositions[0].X);
         }
 
         [TestMethod]
@@ -60,10 +108,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 2, 3, 2, 3, 2, 3, 2, 3 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(1, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, flatHolePositions.Count);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(1, notFlatPositions.Count);
+
+            foreach (var d in deepHolePositions)
+                Assert.AreEqual(3, d.Rotation);
+            foreach (var f in flatHolePositions)
+                Assert.AreEqual(2, f.Rotation);
+            foreach (var f in flatPositions)
+                Assert.AreEqual(0, f.Rotation);
+            foreach (var n in notFlatPositions)
+                Assert.AreEqual(1, n.Rotation);
+
+            Assert.AreEqual(1, notFlatPositions[0].X);
         }
 
         [TestMethod]
@@ -75,10 +139,15 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 3, 2, 3, 2, 3, 2, 3, 2 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, flatHolePositions.Count);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(0, notFlatPositions.Count);
         }
 
         [TestMethod]
@@ -90,10 +159,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 2, 2, 3, 2, 3, 2, 3, 2 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(1, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, flatHolePositions.Count);
+            Assert.AreEqual(1, flatPositions.Count);
+            Assert.AreEqual(2, notFlatPositions.Count);
+
+            foreach (var d in deepHolePositions)
+                Assert.AreEqual(3, d.Rotation);
+            foreach (var f in flatHolePositions)
+                Assert.AreEqual(2, f.Rotation);
+            foreach (var f in flatPositions)
+                Assert.AreEqual(0, f.Rotation);
+            foreach (var n in notFlatPositions)
+                Assert.AreEqual(1, n.Rotation);
+
+            Assert.AreEqual(1, flatPositions[0].X);
         }
 
         [TestMethod]
@@ -105,10 +190,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 3, 2, 3, 2, 1, 1, 2, 1 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(6, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, flatHolePositions.Count);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(1, notFlatPositions.Count);
+
+            foreach (var d in deepHolePositions)
+                Assert.AreEqual(3, d.Rotation);
+            foreach (var f in flatHolePositions)
+                Assert.AreEqual(2, f.Rotation);
+            foreach (var f in flatPositions)
+                Assert.AreEqual(0, f.Rotation);
+            foreach (var n in notFlatPositions)
+                Assert.AreEqual(1, n.Rotation);
+
+            Assert.AreEqual(6, notFlatPositions[0].X);
         }
 
         [TestMethod]
@@ -120,10 +221,15 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 1, 2, 3, 2, 1, 0, 1, 2, 3, 2 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(4, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, flatHolePositions.Count);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(0, notFlatPositions.Count);
         }
 
         [TestMethod]
@@ -141,10 +247,15 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(-1, position.Rotation);
-            Assert.AreEqual(-1, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, flatHolePositions.Count);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(0, notFlatPositions.Count);
         }
 
         [TestMethod]
@@ -162,10 +273,15 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            var position = PiceL.GetFit(colums);
+            var deepHolePositions = PiceL.PositionsDeepHole(colums);
+            var flatHolePositions = PiceL.PositionsFlatHole(colums);
+            var flatPositions = PiceL.PositionsFlat(colums);
+            var notFlatPositions = PiceL.PositionsNotFlat(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, flatHolePositions.Count);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(0, notFlatPositions.Count);
         }
     }
 }

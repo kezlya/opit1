@@ -125,16 +125,40 @@ namespace Pirozgok
                         finalPosition = ChoosePosition(flatsJ);
                         break;
                     }
-                    var notFlats = PiceJ.PositionsNotFlat(columns);
-                    if (notFlats.Count!=0)
+                    var notFlatsJ = PiceJ.PositionsNotFlat(columns);
+                    if (notFlatsJ.Count != 0)
                     {
-                        finalPosition = ChoosePosition(notFlats);
+                        finalPosition = ChoosePosition(notFlatsJ);
                     }
                     break;
-                /*case PieceType.L:
-                    position = PiceL.GetFit(columns);
+                case PieceType.L:
+                    var deepHolesL = PiceJ.PositionsDeepHole(columns);
+                    if (deepHolesL.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(deepHolesL);
+                        break;
+                    }
+
+                    var flatHolesL = PiceJ.PositionsFlatHole(columns);
+                    if (flatHolesL.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flatHolesL);
+                        break;
+                    }
+
+                    var flatsL = PiceJ.PositionsFlat(columns);
+                    if (flatsL.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flatsL);
+                        break;
+                    }
+                    var notFlatsL = PiceJ.PositionsNotFlat(columns);
+                    if (notFlatsL.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(notFlatsL);
+                    }
                     break;
-                case PieceType.O:
+                /*case PieceType.O:
                     position = PiceO.GetFit(columns);
                     break;
                 case PieceType.S:
