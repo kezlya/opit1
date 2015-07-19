@@ -1,3 +1,5 @@
+using System;
+
 namespace Pirozgok.Pieces
 {
     public static class Extention
@@ -60,6 +62,94 @@ namespace Pirozgok.Pieces
         public static int RightRightRightRight(this int[] columns, int i)
         {
             return columns[i + 4];
+        }
+
+        public static int[] GetColomnsAfter(this int[] columns, int i, int rotation, PieceType pieceType)
+        {
+            int[] columnsAfter = new int[columns.Length];
+            Array.Copy(columns, columnsAfter, columns.Length);
+            switch (pieceType)
+            {
+                case PieceType.I:
+                    switch (rotation)
+                    {
+                        case 0:
+                            columnsAfter[i] = columnsAfter[i] + 4;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                            columnsAfter[i + 3] = columnsAfter[i + 3] + 1;
+                            break;
+                    }
+                    break;
+                case PieceType.J:
+                    switch (rotation)
+                    {
+                        case 0:
+                            columnsAfter[i] = columnsAfter[i] + 4;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            break;
+                    }
+                    break;
+                case PieceType.L:
+                     switch (rotation)
+                    {
+                        case 0:
+                            columnsAfter[i] = columnsAfter[i] + 4;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            break;
+                    }
+                    break;
+                case PieceType.O:
+                    columnsAfter[i] = columnsAfter[i] + 2;
+                    columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                    break;
+                case PieceType.S:
+                     switch (rotation)
+                    {
+                        case 0:
+                            columnsAfter[i] = columnsAfter[i] + 4;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            break;
+                    }
+                    break;
+                case PieceType.T:
+                     switch (rotation)
+                    {
+                        case 0:
+                            columnsAfter[i] = columnsAfter[i] + 4;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            break;
+                    }
+                    break;
+                case PieceType.Z:
+                     switch (rotation)
+                    {
+                        case 0:
+                            columnsAfter[i] = columnsAfter[i] + 4;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 1;
+                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            break;
+                    }
+                    break;
+            }
+            return columnsAfter;
         }
     }
 }

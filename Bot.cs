@@ -64,7 +64,7 @@ namespace Pirozgok
 
 
 
-            var moves = new List<MoveType>();
+            
             //TODO: Impliment timer
             //banchmark
 
@@ -111,6 +111,41 @@ namespace Pirozgok
                     break;
             }
 
+
+
+            //TODO: check if aponnent close to die
+
+            //TODO: prioritize combo points 
+
+            //TODO: Benchmark all methods
+
+
+            return GetMovesFromPosition(position);
+        }
+
+
+
+        //TODO: refuctor to better method and do same thing got field of player 2
+        private int[] GetColumns()
+        {
+            var myField = Players[MatchSettings.PlayerName].Field;
+            var flat = myField.Grid.ToEnumerable<FieldCell>();
+            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block).ToList();
+            int[] columns = new int[myField.Width];
+
+            foreach (var cell in accupiedCells)
+            {
+                var yy = myField.Height - cell.Y;
+                if (yy > columns[cell.X]) columns[cell.X] = yy;
+            }
+
+            return columns;
+        }
+
+        private MoveType[] GetMovesFromPosition(Position position)
+        {
+            var moves = new List<MoveType>();
+
             //position.Rotation
             if (position.Rotation > 0)
             {
@@ -139,38 +174,8 @@ namespace Pirozgok
                 moves.Add(MoveType.Down);
             }
 
-            //TODO: find perfect place for next peace
-
-
-
-            //TODO: check if aponnent close to die
-
-            //TODO: prioritize combo points 
-
-            //TODO: Benchmark all methods
-
-
             return moves.ToArray();
         }
-
-        //TODO: refuctor to better method and do same thing got field of player 2
-        private int[] GetColumns()
-        {
-            var myField = Players[MatchSettings.PlayerName].Field;
-            var flat = myField.Grid.ToEnumerable<FieldCell>();
-            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block).ToList();
-            int[] columns = new int[myField.Width];
-
-            foreach (var cell in accupiedCells)
-            {
-                var yy = myField.Height - cell.Y;
-                if (yy > columns[cell.X]) columns[cell.X] = yy;
-            }
-
-            return columns;
-        }
-
-
 
         public void Dispose()
         {
