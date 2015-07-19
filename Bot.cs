@@ -1,10 +1,7 @@
-﻿
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using Pirozgok.Commands;
 using Pirozgok.Pieces;
 
@@ -69,6 +66,7 @@ namespace Pirozgok
 
             var moves = new List<MoveType>();
             //TODO: Impliment timer
+            //banchmark
 
             //TODO: look for lowest y and select position
 
@@ -76,7 +74,9 @@ namespace Pirozgok
             //TODO: find perfect place for current pice
 
             //get columns from field 
-            var columns = GetColumns();
+            int[] columns = GetColumns();
+
+            
 
             // var columns = GetColumns(myGrid);
 
@@ -89,25 +89,25 @@ namespace Pirozgok
             switch (GameState.PieceType)
             {
                 case PieceType.I:
-                    position = new PiceI().GetFit(columns);
+                    position = PiceI.GetFit(columns);
                     break;
                 case PieceType.J:
-                    position = new PiceJ().GetFit(columns);
+                    position = PiceJ.GetFit(columns);
                     break;
                 case PieceType.L:
-                    position = new PiceL().GetFit(columns);
+                    position = PiceL.GetFit(columns);
                     break;
                 case PieceType.O:
-                    position = new PiceO().GetFit(columns);
+                    position = PiceO.GetFit(columns);
                     break;
                 case PieceType.S:
-                    position = new PiceS().GetFit(columns);
+                    position = PiceS.GetFit(columns);
                     break;
                 case PieceType.T:
-                    position = new PiceT().GetFit(columns);
+                    position = PiceT.GetFit(columns);
                     break;
                 case PieceType.Z:
-                    position = new PiceZ().GetFit(columns);
+                    position = PiceZ.GetFit(columns);
                     break;
             }
 
@@ -153,6 +153,7 @@ namespace Pirozgok
             return moves.ToArray();
         }
 
+        //TODO: refuctor to better method and do same thing got field of player 2
         private int[] GetColumns()
         {
             var myField = Players[MatchSettings.PlayerName].Field;

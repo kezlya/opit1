@@ -1,8 +1,8 @@
 namespace Pirozgok.Pieces
 {
-    public class PiceL : IPiece
+    public static class PiceL
     {
-        public Position GetFit(int[] c)
+        public static Position GetFit(int[] c)
         {
             var result = new Position();
 

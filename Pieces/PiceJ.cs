@@ -1,8 +1,8 @@
 namespace Pirozgok.Pieces
 {
-    public class PiceJ : IPiece
+    public static class PiceJ
     {
-        public Position GetFit(int[] c)
+        public static Position GetFit(int[] c)
         {
             var result = new Position();
 

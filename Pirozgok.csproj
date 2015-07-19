@@ -58,7 +58,6 @@
     <Compile Include="Pieces\PiceO.cs" />
     <Compile Include="Pieces\PiceL.cs" />
     <Compile Include="Pieces\Extention.cs" />
-    <Compile Include="Pieces\IPiece.cs" />
     <Compile Include="MatchSettings.cs" />
     <Compile Include="MoveType.cs" />
     <Compile Include="Parser.cs" />

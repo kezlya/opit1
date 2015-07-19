@@ -1,10 +1,8 @@
-using System.Collections.Generic;
-
 namespace Pirozgok.Pieces
 {
-    public class PiceI : IPiece
+    public static class PiceI
     {
-        public Position GetFit(int[] c)
+        public static Position GetFit(int[] c)
         {
             var result = new Position();
 

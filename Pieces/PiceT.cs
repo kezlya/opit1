@@ -1,10 +1,8 @@
-using System.Runtime.Remoting.Messaging;
-
 namespace Pirozgok.Pieces
 {
-    public class PiceT : IPiece
+    public static class PiceT
     {
-        public Position GetFit(int[] c)
+        public static Position GetFit(int[] c)
         {
             var result = new Position();
 
