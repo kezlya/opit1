@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pirozgok.Pieces;
 
 namespace Tests
@@ -15,12 +16,20 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
 
-            var position = PiceI.GetFit(colums);
+            var deepHolePositions = PiceI.PositionsDeepHole(colums);
+            var oneLevelPositions = PiceI.PositionsOneLevelStep(colums);
+            var flatPositions = PiceI.PositionsFlat(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(1, position.X);
+            Assert.AreEqual(0, deepHolePositions.Count);
+            Assert.AreEqual(0, oneLevelPositions.Count);
+            Assert.AreEqual(7, flatPositions.Count);
+            //Shift Right
+            Assert.AreEqual(1, flatPositions[0].X);
+            Assert.AreEqual(0, flatPositions[1].X);
+            foreach (var flatPosition in flatPositions)
+                Assert.AreEqual(0, flatPosition.Rotation);
         }
-
+        /*
         [TestMethod]
         public void I_DeepHole()
         {
@@ -166,6 +175,6 @@ namespace Tests
 
             Assert.AreEqual(1, position.Rotation);
             Assert.AreEqual(0, position.X);
-        }
+        }*/
     }
 }

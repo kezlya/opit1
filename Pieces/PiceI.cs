@@ -46,8 +46,7 @@ namespace Pirozgok.Pieces
                         Rotation = 0,
                         X = i + 1,
                         BurnRows = 0,
-                        ColumsAfter = c.GetColomnsAfter(i + 1, 0, PieceType.I),
-                        BestFit = false
+                        ColumsAfter = c.GetColomnsAfter(i + 1, 0, PieceType.I)
                     });
 
                     result.Add(new Position
@@ -55,8 +54,7 @@ namespace Pirozgok.Pieces
                         Rotation = 0,
                         X = i,
                         BurnRows = 0,
-                        ColumsAfter = c.GetColomnsAfter(i, 0, PieceType.I),
-                        BestFit = false
+                        ColumsAfter = c.GetColomnsAfter(i, 0, PieceType.I)
                     });
 
                     i++;
@@ -68,8 +66,7 @@ namespace Pirozgok.Pieces
                         Rotation = 0,
                         X = i,
                         BurnRows = 0,
-                        ColumsAfter = c.GetColomnsAfter(i, 0, PieceType.I),
-                        BestFit = false
+                        ColumsAfter = c.GetColomnsAfter(i, 0, PieceType.I)
                     });
                 }
             }

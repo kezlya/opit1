@@ -50,12 +50,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestsPieceZ.cs" />
-    <Compile Include="TestsPieceT.cs" />
-    <Compile Include="TestsPieceS.cs" />
-    <Compile Include="TestsPieceO.cs" />
-    <Compile Include="TestsPieceL.cs" />
-    <Compile Include="TestsPieceJ.cs" />
     <Compile Include="TestsPieceI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsPieceExtentions.cs" />

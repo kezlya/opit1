@@ -76,22 +76,35 @@ namespace Pirozgok
             //get columns from field 
             int[] columns = GetColumns();
 
-            
-
-            // var columns = GetColumns(myGrid);
-
-            Position position = new Position
+            Position finalPosition = new Position
             {
                 Rotation = 0,
                 X = 0
             };
-
             switch (GameState.PieceType)
             {
                 case PieceType.I:
-                    position = PiceI.GetFit(columns);
+                    var deepHoles = PiceI.PositionsDeepHole(columns);
+                    if (deepHoles.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(deepHoles);
+                        break;
+                    }
+                    
+                    var flats = PiceI.PositionsFlat(columns);
+                    if (flats.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flats);
+                        break;
+                    }
+                    
+                    var steps = PiceI.PositionsOneLevelStep(columns);
+                    if (steps.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(steps);
+                    }
                     break;
-                case PieceType.J:
+                /*case PieceType.J:
                     position = PiceJ.GetFit(columns);
                     break;
                 case PieceType.L:
@@ -108,7 +121,7 @@ namespace Pirozgok
                     break;
                 case PieceType.Z:
                     position = PiceZ.GetFit(columns);
-                    break;
+                    break;*/
             }
 
 
@@ -120,9 +133,14 @@ namespace Pirozgok
             //TODO: Benchmark all methods
 
 
-            return GetMovesFromPosition(position);
+            return GetMovesFromPosition(finalPosition);
         }
 
+
+        private Position ChoosePosition(List<Position> positions)
+        {
+            return positions[0];
+        }
 
 
         //TODO: refuctor to better method and do same thing got field of player 2

@@ -74,13 +74,13 @@ namespace Pirozgok.Pieces
                     switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 4;
-                            break;
-                        case 1:
                             columnsAfter[i] = columnsAfter[i] + 1;
                             columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
                             columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
                             columnsAfter[i + 3] = columnsAfter[i + 3] + 1;
+                            break;
+                        case 1:
+                            columnsAfter[i] = columnsAfter[i] + 4;
                             break;
                     }
                     break;
