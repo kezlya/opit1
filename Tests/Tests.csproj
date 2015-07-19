@@ -59,6 +59,9 @@
     <Compile Include="TestsPieceL.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TestsPieceO.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pirozgok.csproj">

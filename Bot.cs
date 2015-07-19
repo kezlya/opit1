@@ -132,36 +132,54 @@ namespace Pirozgok
                     }
                     break;
                 case PieceType.L:
-                    var deepHolesL = PiceJ.PositionsDeepHole(columns);
+                    var deepHolesL = PiceL.PositionsDeepHole(columns);
                     if (deepHolesL.Count != 0)
                     {
                         finalPosition = ChoosePosition(deepHolesL);
                         break;
                     }
 
-                    var flatHolesL = PiceJ.PositionsFlatHole(columns);
+                    var flatHolesL = PiceL.PositionsFlatHole(columns);
                     if (flatHolesL.Count != 0)
                     {
                         finalPosition = ChoosePosition(flatHolesL);
                         break;
                     }
 
-                    var flatsL = PiceJ.PositionsFlat(columns);
+                    var flatsL = PiceL.PositionsFlat(columns);
                     if (flatsL.Count != 0)
                     {
                         finalPosition = ChoosePosition(flatsL);
                         break;
                     }
-                    var notFlatsL = PiceJ.PositionsNotFlat(columns);
+                    var notFlatsL = PiceL.PositionsNotFlat(columns);
                     if (notFlatsL.Count != 0)
                     {
                         finalPosition = ChoosePosition(notFlatsL);
                     }
                     break;
-                /*case PieceType.O:
-                    position = PiceO.GetFit(columns);
+                case PieceType.O:
+                    var deepHolesO = PiceO.PositionsDeepHole(columns);
+                    if (deepHolesO.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(deepHolesO);
+                        break;
+                    }
+
+                    var stepsO = PiceO.PositionsOneLevelStep(columns);
+                    if (stepsO.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(stepsO);
+                        break;
+                    }
+
+                    var flatsO = PiceO.PositionsFlat(columns);
+                    if (flatsO.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flatsO);
+                    }
                     break;
-                case PieceType.S:
+                /*case PieceType.S:
                     position = PiceS.GetFit(columns);
                     break;
                 case PieceType.T:
@@ -180,6 +198,7 @@ namespace Pirozgok
 
             //TODO: Benchmark all methods
 
+            //TODO: Test columsAfter
 
             return GetMovesFromPosition(finalPosition);
         }
