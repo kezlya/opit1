@@ -76,11 +76,7 @@ namespace Pirozgok
             //get columns from field 
             int[] columns = GetColumns();
 
-            Position finalPosition = new Position
-            {
-                Rotation = 0,
-                X = 0
-            };
+            List<Position> goodPositions = new List<Position>();
             switch (GameState.PieceType)
             {
                 //TODO: subcases should only represent rotations No More deep holes
@@ -88,152 +84,174 @@ namespace Pirozgok
                     var deepHolesI = PiceI.PositionsDeepHole(columns);
                     if (deepHolesI.Count != 0)
                     {
-                        finalPosition = ChoosePosition(deepHolesI);
-                        break;
+                        goodPositions.AddRange(deepHolesI);
+                        //finalPosition = ChoosePosition(deepHolesI);
+                        //break;
                     }
                     
                     var flatsI = PiceI.PositionsFlat(columns);
                     if (flatsI.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatsI);
-                        break;
+                        goodPositions.AddRange(flatsI);
+                        //finalPosition = ChoosePosition(flatsI);
+                        //break;
                     }
                     
                     var stepsI = PiceI.PositionsOneLevelStep(columns);
                     if (stepsI.Count != 0)
                     {
-                        finalPosition = ChoosePosition(stepsI);
+                        goodPositions.AddRange(stepsI);
+                        //finalPosition = ChoosePosition(stepsI);
                     }
                     break;
                 case PieceType.J:
                     var deepHolesJ = PiceJ.PositionsDeepHole(columns);
                     if (deepHolesJ.Count != 0)
                     {
-                        finalPosition = ChoosePosition(deepHolesJ);
-                        break;
+                        goodPositions.AddRange(deepHolesJ);
+                        //finalPosition = ChoosePosition(deepHolesJ);
+                        //break;
                     }
 
                     var flatHolesJ = PiceJ.PositionsFlatHole(columns);
                     if (flatHolesJ.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatHolesJ);
-                        break;
+                        goodPositions.AddRange(flatHolesJ);
+                        //finalPosition = ChoosePosition(flatHolesJ);
+                        //break;
                     }
 
                     var flatsJ = PiceJ.PositionsFlat(columns);
                     if (flatsJ.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatsJ);
-                        break;
+                        goodPositions.AddRange(flatsJ);
+                        //finalPosition = ChoosePosition(flatsJ);
+                        //break;
                     }
                     var notFlatsJ = PiceJ.PositionsNotFlat(columns);
                     if (notFlatsJ.Count != 0)
                     {
-                        finalPosition = ChoosePosition(notFlatsJ);
+                        goodPositions.AddRange(notFlatsJ);
+                        //finalPosition = ChoosePosition(notFlatsJ);
                     }
                     break;
                 case PieceType.L:
                     var deepHolesL = PiceL.PositionsDeepHole(columns);
                     if (deepHolesL.Count != 0)
                     {
-                        finalPosition = ChoosePosition(deepHolesL);
-                        break;
+                        goodPositions.AddRange(deepHolesL);
+                        //finalPosition = ChoosePosition(deepHolesL);
+                        //break;
                     }
 
                     var flatHolesL = PiceL.PositionsFlatHole(columns);
                     if (flatHolesL.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatHolesL);
-                        break;
+                        goodPositions.AddRange(flatHolesL);
+                        //finalPosition = ChoosePosition(flatHolesL);
+                        //break;
                     }
 
                     var flatsL = PiceL.PositionsFlat(columns);
                     if (flatsL.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatsL);
-                        break;
+                        goodPositions.AddRange(flatsL);
+                        //finalPosition = ChoosePosition(flatsL);
+                        //break;
                     }
                     var notFlatsL = PiceL.PositionsNotFlat(columns);
                     if (notFlatsL.Count != 0)
                     {
-                        finalPosition = ChoosePosition(notFlatsL);
+                        goodPositions.AddRange(notFlatsL);
+                        //finalPosition = ChoosePosition(notFlatsL);
                     }
                     break;
                 case PieceType.O:
                     var deepHolesO = PiceO.PositionsDeepHole(columns);
                     if (deepHolesO.Count != 0)
                     {
-                        finalPosition = ChoosePosition(deepHolesO);
-                        break;
+                        goodPositions.AddRange(deepHolesO);
+                        //finalPosition = ChoosePosition(deepHolesO);
+                        //break;
                     }
 
                     var stepsO = PiceO.PositionsOneLevelStep(columns);
                     if (stepsO.Count != 0)
                     {
-                        finalPosition = ChoosePosition(stepsO);
-                        break;
+                        goodPositions.AddRange(stepsO);
+                        //finalPosition = ChoosePosition(stepsO);
+                        //break;
                     }
 
                     var flatsO = PiceO.PositionsFlat(columns);
                     if (flatsO.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatsO);
+                        goodPositions.AddRange(flatsO);
+                        //finalPosition = ChoosePosition(flatsO);
                     }
                     break;
                 case PieceType.S:
                     var flatsS = PiceS.PositionsFlat(columns);
                     if (flatsS.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatsS);
-                        break;
+                        goodPositions.AddRange(flatsS);
+                        //finalPosition = ChoosePosition(flatsS);
+                        //break;
                     }
 
                     var verticlesS = PiceS.PositionsVerticle(columns);
                     if (verticlesS.Count != 0)
                     {
-                        finalPosition = ChoosePosition(verticlesS);
+                        goodPositions.AddRange(verticlesS);
+                        //finalPosition = ChoosePosition(verticlesS);
                     }
                     break;
                 case PieceType.T:
                     var pointsUp = PiceT.PositionsPointUp(columns);
                     if (pointsUp.Count != 0)
                     {
-                        finalPosition = ChoosePosition(pointsUp);
-                        break;
+                        goodPositions.AddRange(pointsUp);
+                        //finalPosition = ChoosePosition(pointsUp);
+                        //break;
                     }
 
                    var pointsDown = PiceT.PositionsPointDown(columns);
                    if (pointsDown.Count != 0)
                     {
-                        finalPosition = ChoosePosition(pointsDown);
-                        break;
+                        goodPositions.AddRange(pointsDown);
+                        //finalPosition = ChoosePosition(pointsDown);
+                        //break;
                     }
 
                     var pointRight = PiceT.PositionsPointRight(columns);
                     if (pointRight.Count != 0)
                     {
-                        finalPosition = ChoosePosition(pointRight);
-                        break;
+                        goodPositions.AddRange(pointRight);
+                        //finalPosition = ChoosePosition(pointRight);
+                        //break;
                     }
 
                     var pointsLeft = PiceT.PositionsPointLeft(columns);
                     if (pointsLeft.Count != 0)
                     {
-                        finalPosition = ChoosePosition(pointsLeft);
+                        goodPositions.AddRange(pointsLeft);
+                        //finalPosition = ChoosePosition(pointsLeft);
                     }
                     break;
                 case PieceType.Z:
                     var flatsZ = PiceZ.PositionsFlat(columns);
                     if (flatsZ.Count != 0)
                     {
-                        finalPosition = ChoosePosition(flatsZ);
-                        break;
+                        goodPositions.AddRange(flatsZ);
+                        //finalPosition = ChoosePosition(flatsZ);
+                        //break;
                     }
 
                     var verticlesZ = PiceZ.PositionsVerticle(columns);
                     if (verticlesZ.Count != 0)
                     {
-                        finalPosition = ChoosePosition(verticlesZ);
+                        goodPositions.AddRange(verticlesZ);
+                        //finalPosition = ChoosePosition(verticlesZ);
                     }
                     break;
             }
@@ -248,13 +266,36 @@ namespace Pirozgok
 
             //TODO: Test columsAfter
 
+            var finalPosition = ChoosePosition(goodPositions);
+
             return GetMovesFromPosition(finalPosition);
         }
 
 
         private Position ChoosePosition(List<Position> positions)
         {
-            return positions[0];
+            if (positions.Count > 1)
+            {
+                Position cache = positions[0];
+            
+                for (var i=1; i < positions.Count; i++)
+                {
+                    if (cache.ColumsAfterAve > positions[i].ColumsAfterAve)
+                        cache = positions[i];
+                }
+                return cache;
+            }
+            
+            if (positions.Count == 1)
+            {
+                return positions[0];
+            }
+
+            return new Position
+            {
+                Rotation = 0,
+                X = 0
+            };
         }
 
 
