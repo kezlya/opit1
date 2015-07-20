@@ -266,13 +266,13 @@ namespace Pirozgok
 
             //TODO: Test columsAfter
 
-            var finalPosition = ChoosePosition(goodPositions);
+            var finalPosition = ChoosePosition(goodPositions, columns);
 
             return GetMovesFromPosition(finalPosition);
         }
 
 
-        private Position ChoosePosition(List<Position> positions)
+        private Position ChoosePosition(List<Position> positions, int[] columns)
         {
             if (positions.Count > 1)
             {
@@ -280,7 +280,7 @@ namespace Pirozgok
             
                 for (var i=1; i < positions.Count; i++)
                 {
-                    if (cache.ColumsAfterAve > positions[i].ColumsAfterAve)
+                    if (columns[cache.X] > columns[positions[i].X])
                         cache = positions[i];
                 }
                 return cache;
