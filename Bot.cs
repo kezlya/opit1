@@ -304,7 +304,7 @@ namespace Pirozgok
         {
             var myField = Players[MatchSettings.PlayerName].Field;
             var flat = myField.Grid.ToEnumerable<FieldCell>();
-            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block).ToList();
+            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block || x.Type == FieldCellType.Solid).ToList();
             int[] columns = new int[myField.Width];
 
             foreach (var cell in accupiedCells)
