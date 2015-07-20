@@ -62,6 +62,15 @@
     <Compile Include="TestsPieceO.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TestsPieceS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TestsPieceT.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TestsPieceZ.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pirozgok.csproj">

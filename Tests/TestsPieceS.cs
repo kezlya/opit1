@@ -15,10 +15,18 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 3, 3, 3, 1, 3, 2, 3, 3 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(2, verticlePositions.Count);
+
+            foreach (var d in flatPositions)
+                Assert.AreEqual(0, d.Rotation);
+            foreach (var o in verticlePositions)
+                Assert.AreEqual(1, o.Rotation);
+
+            Assert.AreEqual(0, verticlePositions[0].X);
         }
 
         [TestMethod]
@@ -30,10 +38,18 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 3, 3, 3, 3, 0, 3, 2, 3, 3 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(6, position.X);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(1, verticlePositions.Count);
+
+            foreach (var d in flatPositions)
+                Assert.AreEqual(0, d.Rotation);
+            foreach (var o in verticlePositions)
+                Assert.AreEqual(1, o.Rotation);
+
+            Assert.AreEqual(6, verticlePositions[0].X);
         }
 
         [TestMethod]
@@ -45,10 +61,18 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 0, 2, 1, 2, 2, 2, 3, 2, 3, 3 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(4, position.X);
+            Assert.AreEqual(1, flatPositions.Count);
+            Assert.AreEqual(2, verticlePositions.Count);
+
+            foreach (var d in flatPositions)
+                Assert.AreEqual(0, d.Rotation);
+            foreach (var o in verticlePositions)
+                Assert.AreEqual(1, o.Rotation);
+
+            Assert.AreEqual(4, flatPositions[0].X);
         }
 
         [TestMethod]
@@ -60,10 +84,18 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 3, 2, 3, 2, 3, 2, 3, 2 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(5, verticlePositions.Count);
+
+            foreach (var d in flatPositions)
+                Assert.AreEqual(0, d.Rotation);
+            foreach (var o in verticlePositions)
+                Assert.AreEqual(1, o.Rotation);
+
+            Assert.AreEqual(0, verticlePositions[0].X);
         }
 
         [TestMethod]
@@ -75,10 +107,11 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(0, verticlePositions.Count);
         }
 
         [TestMethod]
@@ -90,10 +123,18 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 1, 2, 3, 2, 1, 0, 1, 2, 3, 2 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(4, position.X);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(4, verticlePositions.Count);
+
+            foreach (var d in flatPositions)
+                Assert.AreEqual(0, d.Rotation);
+            foreach (var o in verticlePositions)
+                Assert.AreEqual(1, o.Rotation);
+
+            Assert.AreEqual(4, verticlePositions[2].X);
         }
 
         [TestMethod]
@@ -111,10 +152,18 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(8, position.X);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(9, verticlePositions.Count);
+
+            foreach (var d in flatPositions)
+                Assert.AreEqual(0, d.Rotation);
+            foreach (var o in verticlePositions)
+                Assert.AreEqual(1, o.Rotation);
+
+            Assert.AreEqual(8, verticlePositions[8].X);
         }
 
         [TestMethod]
@@ -132,10 +181,11 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            var position = PiceS.GetFit(colums);
+            var flatPositions = PiceS.PositionsFlat(colums);
+            var verticlePositions = PiceS.PositionsVerticle(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, flatPositions.Count);
+            Assert.AreEqual(0, verticlePositions.Count);
         }
     }
 }

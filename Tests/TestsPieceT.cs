@@ -15,10 +15,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 2, 3, 3, 1, 3, 2, 3, 3 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(2, position.Rotation);
-            Assert.AreEqual(6, position.X);
+            Assert.AreEqual(0, pointUpPositions.Count);
+            Assert.AreEqual(1, pointDownPositions.Count);
+            Assert.AreEqual(2, pointLeftPositions.Count);
+            Assert.AreEqual(2, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(6, pointDownPositions[0].X);
         }
 
         [TestMethod]
@@ -30,10 +46,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 1, 2, 3, 3, 0, 3, 2, 3, 3 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(2, position.Rotation);
-            Assert.AreEqual(6, position.X);
+            Assert.AreEqual(0, pointUpPositions.Count);
+            Assert.AreEqual(1, pointDownPositions.Count);
+            Assert.AreEqual(1, pointLeftPositions.Count);
+            Assert.AreEqual(3, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(6, pointDownPositions[0].X);
         }
 
         [TestMethod]
@@ -45,10 +77,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 1, 3, 3, 0, 1, 3, 2, 3, 3 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(4, position.X);
+            Assert.AreEqual(0, pointUpPositions.Count);
+            Assert.AreEqual(1, pointDownPositions.Count);
+            Assert.AreEqual(1, pointLeftPositions.Count);
+            Assert.AreEqual(2, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(4, pointRightPositions[0].X);
         }
 
         [TestMethod]
@@ -60,10 +108,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 1, 3, 3, 1, 0, 3, 2, 3, 3 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(3, position.Rotation);
-            Assert.AreEqual(4, position.X);
+            Assert.AreEqual(0, pointUpPositions.Count);
+            Assert.AreEqual(1, pointDownPositions.Count);
+            Assert.AreEqual(2, pointLeftPositions.Count);
+            Assert.AreEqual(1, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(4, pointLeftPositions[0].X);
         }
 
 
@@ -76,10 +140,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 3, 2, 2, 2, 3, 2, 3, 2, 3, 2 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(0, position.Rotation);
-            Assert.AreEqual(1, position.X);
+            Assert.AreEqual(1, pointUpPositions.Count);
+            Assert.AreEqual(2, pointDownPositions.Count);
+            Assert.AreEqual(4, pointLeftPositions.Count);
+            Assert.AreEqual(3, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(1, pointUpPositions[0].X);
         }
 
 
@@ -92,10 +172,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 1, 2, 3, 2, 1, 0, 1, 2, 3, 2 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(2, position.Rotation);
-            Assert.AreEqual(4, position.X);
+            Assert.AreEqual(0, pointUpPositions.Count);
+            Assert.AreEqual(1, pointDownPositions.Count);
+            Assert.AreEqual(4, pointLeftPositions.Count);
+            Assert.AreEqual(5, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(4, pointDownPositions[0].X);
         }
 
         [TestMethod]
@@ -113,10 +209,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(3, position.Rotation);
-            Assert.AreEqual(8, position.X);
+            Assert.AreEqual(0, pointUpPositions.Count);
+            Assert.AreEqual(0, pointDownPositions.Count);
+            Assert.AreEqual(9, pointLeftPositions.Count);
+            Assert.AreEqual(0, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(8, pointLeftPositions[8].X);
         }
 
         [TestMethod]
@@ -134,10 +246,26 @@ namespace Tests
             // 0I23456789
             var colums = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            var position = PiceT.GetFit(colums);
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(0, position.X);
+            Assert.AreEqual(0, pointUpPositions.Count);
+            Assert.AreEqual(0, pointDownPositions.Count);
+            Assert.AreEqual(0, pointLeftPositions.Count);
+            Assert.AreEqual(9, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(0, pointRightPositions[0].X);
         }
     }
 }

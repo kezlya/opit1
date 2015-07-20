@@ -1,86 +1,90 @@
+using System.Collections.Generic;
+
 namespace Pirozgok.Pieces
 {
     public static class PiceT
     {
-        public static Position GetFit(int[] c)
+        public static List<Position> PositionsPointDown(int[] c)
         {
-            var result = new Position();
-
-            //deep hole 
-            result.Rotation = 1;
+            const int rotation = 2;
+            var result = new List<Position>();
             for (int i = 0; i < c.Length; i++)
             {
-                result.X = i;
                 var cc = c[i];
-
-                if (!c.IsLeft(i) || !c.IsRight(i)) continue;
-
-                if (c.Left(i) > cc + 2 && cc + 1 == c.Right(i))
-                    return result;
-            }
-
-            //deep hole 
-            result.Rotation = 3;
-            for (int i = 0; i < c.Length; i++)
-            {
-                result.X = i;
-                var cc = c[i];
-
                 if (!c.IsRightRight(i)) break;
+                if (cc != c.Right(i) + 1 || cc != c.RightRight(i)) continue;
 
-                if (c.Right(i)+1 == cc && cc + 1 < c.RightRight(i))
-                    return result; ;
+                result.Add(new Position
+                {
+                    Rotation = rotation,
+                    X = i,
+                    BurnRows = 0,
+                    ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.T),
+                });
             }
+            return result;
+        }
 
-            result.Rotation = 0;
+        public static List<Position> PositionsPointUp(int[] c)
+        {
+            const int rotation = 0;
+            var result = new List<Position>();
             for (int i = 0; i < c.Length; i++)
             {
-                result.X = i;
                 var cc = c[i];
-
                 if (!c.IsRightRight(i)) break;
+                if (cc != c.Right(i) || cc != c.RightRight(i)) continue;
 
-                if (cc == c.Right(i) && cc == c.RightRight(i))
-                    return result;
+                result.Add(new Position
+                {
+                    Rotation = rotation,
+                    X = i,
+                    BurnRows = 0,
+                    ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.T),
+                });
             }
+            return result;
+        }
 
-            result.Rotation = 2;
+        public static List<Position> PositionsPointRight(int[] c)
+        {
+            const int rotation = 1;
+            var result = new List<Position>();
             for (int i = 0; i < c.Length; i++)
             {
-                result.X = i;
                 var cc = c[i];
-
-                if (!c.IsRightRight(i)) break;
-
-                if (cc == c.Right(i) + 1 && cc == c.RightRight(i))
-                    return result;
-            }
-
-            result.Rotation = 1;
-            for (int i = 0; i < c.Length; i++)
-            {
-                result.X = i;
-                var cc = c[i];
-
                 if (!c.IsRight(i)) break;
+                if (cc + 1 != c.Right(i)) continue;
 
-                if (cc + 1 == c.Right(i))
-                    return result;
+                result.Add(new Position
+                {
+                    Rotation = rotation,
+                    X = i,
+                    BurnRows = 0,
+                    ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.T),
+                });
             }
+            return result;
+        }
 
-            result.Rotation = 3;
+        public static List<Position> PositionsPointLeft(int[] c)
+        {
+            const int rotation = 3;
+            var result = new List<Position>();
             for (int i = 0; i < c.Length; i++)
             {
-                result.X = i;
                 var cc = c[i];
-
                 if (!c.IsRight(i)) break;
+                if (cc != c.Right(i) + 1) continue;
 
-                if (cc == c.Right(i)+1)
-                    return result;
+                result.Add(new Position
+                {
+                    Rotation = rotation,
+                    X = i,
+                    BurnRows = 0,
+                    ColumsAfter = c.GetColomnsAfter(i, rotation, PieceType.T),
+                });
             }
-            result.Rotation = 0;
-            result.X = 0;
             return result;
         }
     }

@@ -83,6 +83,7 @@ namespace Pirozgok
             };
             switch (GameState.PieceType)
             {
+                //TODO: subcases should only represent rotations No More deep holes
                 case PieceType.I:
                     var deepHolesI = PiceI.PositionsDeepHole(columns);
                     if (deepHolesI.Count != 0)
@@ -179,15 +180,62 @@ namespace Pirozgok
                         finalPosition = ChoosePosition(flatsO);
                     }
                     break;
-                /*case PieceType.S:
-                    position = PiceS.GetFit(columns);
+                case PieceType.S:
+                    var flatsS = PiceS.PositionsFlat(columns);
+                    if (flatsS.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flatsS);
+                        break;
+                    }
+
+                    var verticlesS = PiceS.PositionsVerticle(columns);
+                    if (verticlesS.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(verticlesS);
+                    }
                     break;
                 case PieceType.T:
-                    position = PiceT.GetFit(columns);
+                    var pointsUp = PiceT.PositionsPointUp(columns);
+                    if (pointsUp.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(pointsUp);
+                        break;
+                    }
+
+                   var pointsDown = PiceT.PositionsPointDown(columns);
+                   if (pointsDown.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(pointsDown);
+                        break;
+                    }
+
+                    var pointRight = PiceT.PositionsPointRight(columns);
+                    if (pointRight.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(pointRight);
+                        break;
+                    }
+
+                    var pointsLeft = PiceT.PositionsPointLeft(columns);
+                    if (pointsLeft.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(pointsLeft);
+                    }
                     break;
                 case PieceType.Z:
-                    position = PiceZ.GetFit(columns);
-                    break;*/
+                    var flatsZ = PiceZ.PositionsFlat(columns);
+                    if (flatsZ.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(flatsZ);
+                        break;
+                    }
+
+                    var verticlesZ = PiceZ.PositionsVerticle(columns);
+                    if (verticlesZ.Count != 0)
+                    {
+                        finalPosition = ChoosePosition(verticlesZ);
+                    }
+                    break;
             }
 
 
