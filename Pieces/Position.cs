@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace Pirozgok.Pieces
 {
@@ -11,6 +10,7 @@ namespace Pirozgok.Pieces
         public int X { get; set; }
         public int [] ColumsAfter { get; set; }
         public int BurnRows { get; set; }
+        public PieceType Type { get; set; }
 
         public double ColumsAfterAve
         {
