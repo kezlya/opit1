@@ -16,6 +16,7 @@ namespace Pirozgok.Pieces
 
                 result.Add(new Position
                 {
+                    Type = PieceType.S,
                     Rotation = rotation,
                     X = i,
                     BurnRows = 0,
@@ -36,6 +37,7 @@ namespace Pirozgok.Pieces
 
                 result.Add(new Position
                 {
+                    Type = PieceType.S,
                     Rotation = rotation,
                     X = i,
                     BurnRows = 0,

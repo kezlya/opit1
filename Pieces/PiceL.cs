@@ -14,6 +14,7 @@ namespace Pirozgok.Pieces
                 if (c.IsRight(i) && cc == c.Right(i) + 2)
                     result.Add(new Position
                     {
+                        Type = PieceType.L,
                         Rotation = rotation,
                         X = i,
                         BurnRows = 0,
@@ -33,6 +34,7 @@ namespace Pirozgok.Pieces
                 if (c.IsRightRight(i) && cc + 1 == c.Right(i) && cc + 1 == c.RightRight(i))
                     result.Add(new Position
                     {
+                        Type = PieceType.L,
                         Rotation = rotation,
                         X = i,
                         BurnRows = 0,
@@ -54,6 +56,7 @@ namespace Pirozgok.Pieces
 
                 result.Add(new Position
                 {
+                    Type = PieceType.L,
                     Rotation = rotation,
                     X = i,
                     BurnRows = 0,
@@ -74,6 +77,7 @@ namespace Pirozgok.Pieces
 
                 result.Add(new Position
                 {
+                    Type = PieceType.L,
                     Rotation = rotation,
                     X = i,
                     BurnRows = 0,
