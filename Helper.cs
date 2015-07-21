@@ -6,6 +6,7 @@ namespace Pirozgok
 {
     public static class Helper
     {
+        // Find perfect place for current pice
         public static List<Position> FindFitPositions(PieceType type, int[] columns)
         {
             List<Position> goodPositions = new List<Position>();
@@ -190,6 +191,7 @@ namespace Pirozgok
             return goodPositions;
         }
 
+        // Look for lowest y and select position
         public static Position ChoosePosition(List<Position> positions, int[] columns)
         {
             if (positions.Count > 1)
@@ -204,19 +206,10 @@ namespace Pirozgok
                 return cache;
             }
 
-            if (positions.Count == 1)
-            {
-                return positions[0];
-            }
-
-            return new Position
-            {
-                Rotation = 0,
-                X = 0
-            };
+            return positions[0];
         }
 
-        public static MoveType[] MovesForPosition(Position position,int x)
+        public static MoveType[] MovesForPosition(Position position, int x)
         {
             var moves = new List<MoveType>();
 
@@ -234,21 +227,71 @@ namespace Pirozgok
             if (origenX > destinationX)
             {
                 //move left
-                moves.AddRange(Enumerable.Repeat(MoveType.Left, origenX - destinationX));
+                for(int i=0;i<origenX-destinationX;i++)
+                    moves.Add(MoveType.Left);
 
             }
             else if (origenX < destinationX)
             {
                 //move right
-                moves.AddRange(Enumerable.Repeat(MoveType.Right, destinationX - origenX));
-
+                for (int i = 0; i < destinationX - origenX; i++)
+                moves.Add(MoveType.Right);
             }
             else
             {
                 moves.Add(MoveType.Down);
             }
-
             return moves.ToArray();
+        }
+
+        public static Position MinimumDamagePosition(PieceType type, int[] columns)
+        {
+            var result = new Position
+            {
+                Type = type,
+                Rotation = 0,
+                X = 0,
+            };
+            int minDammage = 1000;
+
+            int rotationMax = 0;
+            switch (type)
+            {
+                case PieceType.O:
+                    rotationMax = 1;
+                    break;
+                case PieceType.I:
+                case PieceType.Z:
+                case PieceType.S:
+                    rotationMax = 2;
+                    break;
+                case PieceType.J:
+                case PieceType.L:
+                case PieceType.T:
+                    rotationMax = 4;
+                    break;
+            }
+            
+            for (int r = 0; r < rotationMax; r++)
+            {
+                for (int i = 0; i < columns.Length; i++)
+                {
+                    var damage = columns.GetColomnsAfter(i, r, type).Sum() - columns.Sum();
+                    if (damage < minDammage)
+                    {
+                        minDammage = damage;
+                        result.Rotation = r;
+                        result.X = i;
+                    }
+
+                    if (damage == minDammage && columns[result.X] >= columns[i])
+                    {
+                        result.Rotation = r;
+                        result.X = i;
+                    }
+                }
+            }
+            return result;
         }
     }
 }

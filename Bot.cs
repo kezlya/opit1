@@ -61,7 +61,7 @@ namespace Pirozgok
         private MoveType[] MovesForRound(int milliseconds)
         {
             //TODO: Impliment timer banchmark
-            
+
             //TODO: check if aponnent close to die
 
             //TODO: prioritize combo points 
@@ -69,15 +69,15 @@ namespace Pirozgok
             //TODO: Benchmark all methods
 
             //TODO: Test columsAfter
-            
+
 
             int[] columns = Players[MatchSettings.PlayerName].Field.Columns;
 
-            // Find perfect place for current pice
             List<Position> goodPositions = Helper.FindFitPositions(GameState.PieceType, columns);
 
-            // Look for lowest y and select position
-            var finalPosition = Helper.ChoosePosition(goodPositions, columns);
+            Position finalPosition = (goodPositions.Count > 0)
+                ? Helper.ChoosePosition(goodPositions, columns)
+                : Helper.MinimumDamagePosition(GameState.PieceType, columns);
 
             return Helper.MovesForPosition(finalPosition, GameState.PiecePositionX);
         }
