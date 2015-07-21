@@ -59,6 +59,12 @@ namespace Pirozgok
 
         private MoveType[] MovesForRound(int milliseconds)
         {
+            // for warm up
+            if (GameState.Round == 1)
+            {
+                return new[] { MoveType.Down };
+            }
+
             //TODO: Impliment timer banchmark
 
             //TODO: check if aponnent close to die
