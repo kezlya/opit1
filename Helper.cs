@@ -235,7 +235,7 @@ namespace Pirozgok
             {
                 //move right
                 for (int i = 0; i < destinationX - origenX; i++)
-                moves.Add(MoveType.Right);
+                    moves.Add(MoveType.Right);
             }
             else
             {
