@@ -66,115 +66,168 @@ namespace Pirozgok.Pieces
                     switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
-                            columnsAfter[i + 3] = columnsAfter[i + 3] + 1;
+                            if (columns.IsRightRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 1;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                                columnsAfter[i + 3] = columnsAfter[i + 3] + 1;
+                            }
                             break;
                         case 1:
                             columnsAfter[i] = columnsAfter[i] + 4;
                             break;
-                            
                     }
                     break;
                 case PieceType.J:
                     switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 2;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 2;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                            }
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 3;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 3;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            }
                             break;
                         case 2:
-                            columnsAfter[i] = columnsAfter[i] + 2;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 2;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            }
                             break;
                         case 3:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 1;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            }
                             break;
                     }
                     break;
                 case PieceType.L:
-                     switch (rotation)
+                    switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 1;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            }
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 3;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 3;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 1;
+                            }
                             break;
                         case 2:
-                            columnsAfter[i] = columnsAfter[i] + 2;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 2;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            }
                             break;
                         case 3:
-                            columnsAfter[i] = columnsAfter[i] + 3;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 3;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            }
                             break;
                     }
                     break;
                 case PieceType.O:
-                    columnsAfter[i] = columnsAfter[i] + 2;
-                    columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                    if (columns.IsRight(i))
+                    {
+                        columnsAfter[i] = columnsAfter[i] + 2;
+                        columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                    }
                     break;
                 case PieceType.S:
-                     switch (rotation)
+                    switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 1;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            }
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 3;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 3;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            }
                             break;
                     }
                     break;
                 case PieceType.T:
-                     switch (rotation)
+                    switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 1;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 1;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                            }
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 3;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 3;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                            }
                             break;
                         case 2:
-                            columnsAfter[i] = columnsAfter[i] + 2;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 2;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 2;
+                            }
                             break;
                         case 3:
-                            columnsAfter[i] = columnsAfter[i] + 2;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 2;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            }
                             break;
                     }
                     break;
                 case PieceType.Z:
-                     switch (rotation)
+                    switch (rotation)
                     {
                         case 0:
-                            columnsAfter[i] = columnsAfter[i] + 2;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
-                            columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                            if (columns.IsRightRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 2;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 2;
+                                columnsAfter[i + 2] = columnsAfter[i + 2] + 1;
+                            }
                             break;
                         case 1:
-                            columnsAfter[i] = columnsAfter[i] + 2;
-                            columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            if (columns.IsRight(i))
+                            {
+                                columnsAfter[i] = columnsAfter[i] + 2;
+                                columnsAfter[i + 1] = columnsAfter[i + 1] + 3;
+                            }
                             break;
                     }
                     break;
