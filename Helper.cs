@@ -272,11 +272,15 @@ namespace Pirozgok
                     break;
             }
             
+            int columnsSum = columns.Sum();
             for (int r = 0; r < rotationMax; r++)
             {
                 for (int i = 0; i < columns.Length; i++)
                 {
-                    var damage = columns.GetColomnsAfter(i, r, type).Sum() - columns.Sum();
+                    int afterSum = columns.GetColomnsAfterWithHoles(i, r, type).Sum();
+                    if (afterSum <= columnsSum) break;
+
+                    var damage = afterSum - columnsSum;
                     if (damage < minDammage)
                     {
                         minDammage = damage;
@@ -284,9 +288,8 @@ namespace Pirozgok
                         result.X = i;
                     }
 
-                    if (damage == minDammage && columns[result.X] >= columns[i])
+                    if (damage == minDammage && columns[result.X] > columns[i])
                     {
-                        result.Rotation = r;
                         result.X = i;
                     }
                 }

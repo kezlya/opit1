@@ -234,5 +234,305 @@ namespace Pirozgok.Pieces
             }
             return columnsAfter;
         }
+        public static int[] GetColomnsAfterWithHoles(this int[] c, int i, int rotation, PieceType pieceType)
+        {
+            int[] columnsAfter = new int[c.Length];
+            Array.Copy(c, columnsAfter, c.Length);
+            switch (pieceType)
+            {
+                case PieceType.I:
+                    switch (rotation)
+                    {
+                        // ####
+                        case 0:
+                            if (c.IsRightRightRight(i))
+                            {
+                                // Piece 4 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? (c.RightRight(i) < c.RightRightRight(i)
+                                            ? c.RightRightRight(i)
+                                            : c.RightRight(i))
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 1;
+                                columnsAfter[i + 2] = pick + 1;
+                                columnsAfter[i + 3] = pick + 1;
+                            }
+                            break;
+
+                        // #
+                        // #
+                        // #
+                        // #
+                        case 1:
+                            columnsAfter[i] = c[i] + 4;
+                            break;
+                    }
+                    break;
+                case PieceType.J:
+                    switch (rotation)
+                    {
+                        // 
+                        // #
+                        // ###
+                        case 0:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 1;
+                                columnsAfter[i + 2] = pick + 1;
+                            }
+                            break;
+
+                        // ##
+                        // #
+                        // #
+                        case 1:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 3;
+                                columnsAfter[i + 1] = pick + 3;
+                            }
+                            break;
+
+                        // 
+                        // ###
+                        //   #
+                        case 2:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 2;
+                                columnsAfter[i + 2] = pick + 2;
+                            }
+                            break;
+
+                        //  #
+                        //  #
+                        // ##
+                        case 3:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 3;
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.L:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 1;
+                                columnsAfter[i + 2] = pick + 2;
+                            }
+                            break;
+                        case 1:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 3;
+                                columnsAfter[i + 1] = pick + 1;
+                            }
+                            break;
+                        case 2:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 2;
+                                columnsAfter[i + 2] = pick + 2;
+                            }
+                            break;
+                        case 3:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 3;
+                                columnsAfter[i + 1] = pick + 3;
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.O:
+                    if (c.IsRight(i))
+                    {
+                        // Piece 2 long
+                        int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                        columnsAfter[i] = pick + 2;
+                        columnsAfter[i + 1] = pick + 2;
+                    }
+                    break;
+                case PieceType.S:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 2;
+                                columnsAfter[i + 2] = pick + 2;
+                            }
+                            break;
+                        case 1:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 3;
+                                columnsAfter[i + 1] = pick + 2;
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.T:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 2;
+                                columnsAfter[i + 2] = pick + 1;
+                            }
+                            break;
+                        case 1:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 3;
+                                columnsAfter[i + 1] = pick + 2;
+                            }
+                            break;
+                        case 2:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 2;
+                                columnsAfter[i + 2] = pick + 2;
+                            }
+                            break;
+                        case 3:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 3;
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.Z:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (c.IsRightRight(i))
+                            {
+                                // Piece 3 long
+                                int pick = c[i] < c.Right(i)
+                                    ? (c.Right(i) < c.RightRight(i)
+                                        ? c.RightRight(i)
+                                        : c.Right(i))
+                                    : c[i];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 2;
+                                columnsAfter[i + 2] = pick + 1;
+                            }
+                            break;
+                        case 1:
+                            if (c.IsRight(i))
+                            {
+                                // Piece 2 long
+                                int pick = c[i] < c.Right(i) ? c.Right(i) : c[i];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 3;
+                            }
+                            break;
+                    }
+                    break;
+            }
+            return columnsAfter;
+        }
+
     }
 }
+
+//int pick = c[i] < c.Right(i)
+//                                    ? (c.Right(i) < c.RightRight(i)
+//                                        ? (c.RightRight(i) < c.RightRightRight(i)
+//                                            ? c.RightRightRight(i)
+//                                            : c.RightRight(i))
+//                                        : c.Right(i))
+//                                    : c[i];
