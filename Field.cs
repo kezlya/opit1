@@ -18,6 +18,7 @@ namespace Pirozgok
 
         public void Parse(string value)
         {
+            Columns = new int[Width];
             var rows = value.Split(';');
             if (rows.Length != Height)
             {
