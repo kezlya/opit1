@@ -71,6 +71,7 @@
     <Compile Include="TestsPieceZ.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TestsPerformance.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pirozgok.csproj">

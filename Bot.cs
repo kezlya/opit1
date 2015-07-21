@@ -74,7 +74,8 @@ namespace Pirozgok
             //TODO: find perfect place for current pice
 
             //get columns from field 
-            int[] columns = GetColumns();
+            int[] columns = Players[MatchSettings.PlayerName].Field.Columns;
+            
 
             List<Position> goodPositions = new List<Position>();
             switch (GameState.PieceType)
@@ -296,24 +297,6 @@ namespace Pirozgok
                 Rotation = 0,
                 X = 0
             };
-        }
-
-
-        //TODO: refuctor to better method and do same thing got field of player 2
-        private int[] GetColumns()
-        {
-            var myField = Players[MatchSettings.PlayerName].Field;
-            var flat = myField.Grid.ToEnumerable<FieldCell>();
-            var accupiedCells = flat.Where(x => x.Type == FieldCellType.Block || x.Type == FieldCellType.Solid).ToList();
-            int[] columns = new int[myField.Width];
-
-            foreach (var cell in accupiedCells)
-            {
-                var yy = myField.Height - cell.Y;
-                if (yy > columns[cell.X]) columns[cell.X] = yy;
-            }
-
-            return columns;
         }
 
         private MoveType[] GetMovesFromPosition(Position position)

@@ -6,14 +6,14 @@ namespace Pirozgok
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public FieldCell[,] Grid { get; private set; }
+        public int[] Columns { get; private set; }
 
         public Field(int width, int height)
         {
             Width = width;
             Height = height;
 
-            Grid = new FieldCell[width, height];
+            Columns = new int[width];
         }
 
         public void Parse(string value)
@@ -34,7 +34,9 @@ namespace Pirozgok
                 }
                 for (var x = 0; x < Width; x++)
                 {
-                    Grid[x, y] = new FieldCell(this, x, y, (FieldCellType)Enum.Parse(typeof(FieldCellType), cells[x]));
+                    var type = (FieldCellType)Enum.Parse(typeof(FieldCellType), cells[x]);
+                    if ((type == FieldCellType.Solid || type == FieldCellType.Block) && Columns[x] < Height - y)
+                        Columns[x] = Height - y;
                 }
             }
         }
