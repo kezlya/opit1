@@ -162,6 +162,34 @@ namespace Tests
             Assert.AreEqual(1, pointUpPositions[0].X);
         }
 
+        [TestMethod]
+        public void T_FromGame()
+        {
+            //    ####
+            // 0I23456789
+            var colums = new[] { 0, 0, 0, 1, 1, 1, 1, 0, 0, 0 };
+
+            var pointUpPositions = PiceT.PositionsPointUp(colums);
+            var pointDownPositions = PiceT.PositionsPointDown(colums);
+            var pointLeftPositions = PiceT.PositionsPointLeft(colums);
+            var pointRightPositions = PiceT.PositionsPointRight(colums);
+
+            Assert.AreEqual(4, pointUpPositions.Count);
+            Assert.AreEqual(0, pointDownPositions.Count);
+            Assert.AreEqual(1, pointLeftPositions.Count);
+            Assert.AreEqual(1, pointRightPositions.Count);
+
+            foreach (var u in pointUpPositions)
+                Assert.AreEqual(0, u.Rotation);
+            foreach (var d in pointDownPositions)
+                Assert.AreEqual(2, d.Rotation);
+            foreach (var l in pointLeftPositions)
+                Assert.AreEqual(3, l.Rotation);
+            foreach (var r in pointRightPositions)
+                Assert.AreEqual(1, r.Rotation);
+
+            Assert.AreEqual(0, pointUpPositions[0].X);
+        }
 
         [TestMethod]
         public void T_Steps()

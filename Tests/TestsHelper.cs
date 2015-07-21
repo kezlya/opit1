@@ -66,6 +66,44 @@ namespace Tests
             Assert.AreEqual(8, position.X);
         }
 
+        [TestMethod]
+        public void Md_S_NotFlat()
+        {
+            //    ##  
+            //    ## ##
+            //  # ##### #
+            // ## ##### #
+            // ######## #
+            // 0I23456789
+            var columns = new[] { 2, 3, 1, 5, 5, 3, 4, 4, 0, 3 };
+            var type = PieceType.S;
+
+            var position = Helper.MinimumDamagePosition(type, columns);
+
+            Assert.AreEqual(1, position.Rotation);
+            Assert.AreEqual(1, position.X);
+        }
+
+        [TestMethod]
+        public void Md_J_NotFlat()
+        {
+            //     
+            //     # 
+            //    ## 
+            //    ###  
+            //    ####
+            //  # ##### 
+            //  ########
+            //  ######## 
+            // 0I23456789
+            var columns = new[] { 0, 3, 2, 6, 7, 5, 4, 3, 2, 0 };
+            var type = PieceType.J;
+
+            var position = Helper.MinimumDamagePosition(type, columns);
+
+            Assert.AreEqual(3, position.Rotation);
+            Assert.AreEqual(8, position.X);
+        }
         //TODO: more tests
     }
 }
