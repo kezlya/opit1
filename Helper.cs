@@ -277,10 +277,10 @@ namespace Pirozgok
             {
                 for (int i = 0; i < columns.Length; i++)
                 {
-                    int afterSum = columns.GetColomnsAfterWithHoles(i, r, type).Sum();
-                    if (afterSum <= columnsSum) break;
+                    int[] columsAfter = columns.GetColomnsAfterWithHoles2(i, r, type);
+                    if (columsAfter.Sum() <= columnsSum) break;
 
-                    var damage = afterSum - columnsSum;
+                    var damage = columsAfter.Sum() - columnsSum;
                     if (damage < minDammage)
                     {
                         minDammage = damage;

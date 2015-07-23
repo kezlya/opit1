@@ -62,8 +62,8 @@ namespace Tests
 
             var position = Helper.MinimumDamagePosition(type, colums);
 
-            Assert.AreEqual(1, position.Rotation);
-            Assert.AreEqual(8, position.X);
+            Assert.AreEqual(0, position.Rotation);
+            Assert.AreEqual(7, position.X);
         }
 
         [TestMethod]
@@ -101,8 +101,8 @@ namespace Tests
 
             var position = Helper.MinimumDamagePosition(type, columns);
 
-            Assert.AreEqual(3, position.Rotation);
-            Assert.AreEqual(8, position.X);
+            Assert.AreEqual(1, position.Rotation);
+            Assert.AreEqual(0, position.X);
         }
         //TODO: more tests
     }

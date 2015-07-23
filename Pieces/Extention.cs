@@ -526,6 +526,337 @@ namespace Pirozgok.Pieces
             return columnsAfter;
         }
 
+        public static int[] GetColomnsAfterWithHoles2(this int[] columns, int i, int rotation, PieceType pieceType)
+        {
+            int[] columnsAfter = new int[columns.Length];
+            Array.Copy(columns, columnsAfter, columns.Length);
+            switch (pieceType)
+            {
+                case PieceType.I:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (columns.IsRightRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+                                if (pick < columns[i + 3]) pick = columns[i + 3];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 1;
+                                columnsAfter[i + 2] = pick + 1;
+                                columnsAfter[i + 3] = pick + 1;
+                            }
+                            break;
+                        case 1:
+                            columnsAfter[i] = columns[i] + 4;
+                            break;
+                    }
+                    break;
+                case PieceType.J:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                columnsAfter[i] = pick + 2;
+                                columnsAfter[i + 1] = pick + 1;
+                                columnsAfter[i + 2] = pick + 1;
+                            }
+                            break;
+                        case 1:
+                            if (columns.IsRight(i))
+                            {
+                                if (columns[i + 1] >= columns[i] + 2)
+                                {
+                                    columnsAfter[i] = columns[i+1] + 1;
+                                    columnsAfter[i + 1] = columns[i + 1] + 1;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = columns[i] + 3;
+                                    columnsAfter[i + 1] = columns[i] + 3;
+                                }
+                            }
+                            break;
+                        case 2:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                if (pick == columns[i+2])
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 2;
+                                    columnsAfter[i + 2] = pick + 2;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 1;
+                                    columnsAfter[i + 1] = pick + 1;
+                                    columnsAfter[i + 2] = pick + 1;
+                                }
+                            }
+                            break;
+                        case 3:
+                            if (columns.IsRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 3;
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.L:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 1;
+                                columnsAfter[i + 2] = pick + 2;
+                            }
+                            break;
+                        case 1:
+                            if (columns.IsRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+
+                                columnsAfter[i] = pick + 3;
+                                columnsAfter[i + 1] = pick + 1;
+                            }
+                            break;
+                        case 2:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                if (pick == columns[i])
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 2;
+                                    columnsAfter[i + 2] = pick + 2;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 1;
+                                    columnsAfter[i + 1] = pick + 1;
+                                    columnsAfter[i + 2] = pick + 1;
+                                }
+                            }
+                            break;
+                        case 3:
+                            if (columns.IsRight(i))
+                            {
+                                if (columns[i] >= columns[i+1] + 2)
+                                {
+                                    columnsAfter[i] = columns[i] + 1;
+                                    columnsAfter[i + 1] = columns[i] + 1;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = columns[i+1] + 3;
+                                    columnsAfter[i + 1] = columns[i+1] + 3;
+                                }
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.O:
+                    if (columns.IsRight(i))
+                    {
+                        var pick = columns[i];
+                        if (pick < columns[i + 1]) pick = columns[i + 1];
+
+                        columnsAfter[i] = pick + 2;
+                        columnsAfter[i + 1] = pick + 2;
+                    }
+                    break;
+                case PieceType.S:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                if (pick == columns[i] || pick == columns[i+1])
+                                {
+                                    columnsAfter[i] = pick + 1;
+                                    columnsAfter[i + 1] = pick + 2;
+                                    columnsAfter[i + 2] = pick + 2;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick;
+                                    columnsAfter[i + 1] = pick + 1;
+                                    columnsAfter[i + 2] = pick + 1;
+                                }
+                            }
+                            break;
+                        case 1:
+                            if (columns.IsRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+
+                                if (pick == columns[i+1])
+                                {
+                                    columnsAfter[i] = pick + 3;
+                                    columnsAfter[i + 1] = pick + 2;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 1;
+                                }
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.T:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                columnsAfter[i] = pick + 1;
+                                columnsAfter[i + 1] = pick + 2;
+                                columnsAfter[i + 2] = pick + 1;
+                            }
+                            break;
+                        case 1:
+                            if (columns.IsRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+
+                                if (pick == columns[i])
+                                {
+                                    columnsAfter[i] = pick + 3;
+                                    columnsAfter[i + 1] = pick + 2;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 1;
+                                }
+                            }
+                            break;
+                        case 2:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                if (pick == columns[i+1])
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 2;
+                                    columnsAfter[i + 2] = pick + 2;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 1;
+                                    columnsAfter[i + 1] = pick + 1;
+                                    columnsAfter[i + 2] = pick + 1;
+                                }
+                            }
+                            break;
+                        case 3:
+                            if (columns.IsRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+
+                                if (pick == columns[i+1])
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 3;
+                                    
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 1;
+                                    columnsAfter[i + 1] = pick + 2;
+                                }
+                            }
+                            break;
+                    }
+                    break;
+                case PieceType.Z:
+                    switch (rotation)
+                    {
+                        case 0:
+                            if (columns.IsRightRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+                                if (pick < columns[i + 2]) pick = columns[i + 2];
+
+                                if (pick == columns[i + 1] || pick == columns[i + 2])
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 2;
+                                    columnsAfter[i + 2] = pick + 1;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 1;
+                                    columnsAfter[i + 1] = pick + 1;
+                                    columnsAfter[i + 2] = pick;
+                                }
+                            }
+                            break;
+                        case 1:
+                            if (columns.IsRight(i))
+                            {
+                                var pick = columns[i];
+                                if (pick < columns[i + 1]) pick = columns[i + 1];
+
+                                if (pick == columns[i])
+                                {
+                                    columnsAfter[i] = pick + 2;
+                                    columnsAfter[i + 1] = pick + 3;
+                                }
+                                else
+                                {
+                                    columnsAfter[i] = pick + 1;
+                                    columnsAfter[i + 1] = pick + 2;
+                                }
+                            }
+                            break;
+                    }
+                    break;
+            }
+            return columnsAfter;
+        }
+
     }
 }
 

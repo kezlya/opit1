@@ -169,8 +169,8 @@ namespace Tests
         public void TestGetColomnsAfterWithHolesJrotation0()
         {
             int[] columns = { 1, 7, 1, 8, 1, 9 };
-            var result = columns.GetColomnsAfterWithHoles(Start, 0, PieceType.J);
-            CollectionAssert.AreEqual(new[] { 9, 8, 8, 8, 1, 9 }, result);
+            var result = columns.GetColomnsAfterWithHoles2(Start, 0, PieceType.J);
+            CollectionAssert.AreEqual(new[] { 1, 10, 9, 9, 1, 9 }, result);
         }
 
        /* [TestMethod]
